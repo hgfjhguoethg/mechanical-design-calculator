@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Mechanical Engineering Design Calculator</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1>MED Calculator</h1>
+                <p class="version">v1.0.0</p>
+            </div>
+
+            <div class="search-box">
+                <input type="text" id="moduleSearch" placeholder="Search modules...">
+                <span class="search-icon">🔍</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-group">
+                    <h3>Material & Properties</h3>
+                    <ul>
+                        <li><a href="#" data-module="material-database" class="nav-link">Material Database</a></li>
+                        <li><a href="#" data-module="units-converter" class="nav-link">Units Converter</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-group">
+                    <h3>Stress & Strain Analysis</h3>
+                    <ul>
+                        <li><a href="#" data-module="stress-analysis" class="nav-link">Stress Analysis</a></li>
+                        <li><a href="#" data-module="strain-deflection" class="nav-link">Strain & Deflection</a></li>
+                        <li><a href="#" data-module="fatigue-analysis" class="nav-link">Fatigue Analysis</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-group">
+                    <h3>Beam & Structure</h3>
+                    <ul>
+                        <li><a href="#" data-module="beam-design" class="nav-link">Beam Design</a></li>
+                        <li><a href="#" data-module="structural-design" class="nav-link">Structural Design</a></li>
+                        <li><a href="#" data-module="buckling-analysis" class="nav-link">Buckling Analysis</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-group">
+                    <h3>Rotating Components</h3>
+                    <ul>
+                        <li><a href="#" data-module="shaft-design" class="nav-link">Shaft Design</a></li>
+                        <li><a href="#" data-module="bearing-design" class="nav-link">Bearing Design</a></li>
+                        <li><a href="#" data-module="gear-design" class="nav-link">Gear Design</a></li>
+                        <li><a href="#" data-module="vibration-analysis" class="nav-link">Vibration Analysis</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-group">
+                    <h3>Power Transmission</h3>
+                    <ul>
+                        <li><a href="#" data-module="belt-drive" class="nav-link">Belt Drive</a></li>
+                        <li><a href="#" data-module="chain-drive" class="nav-link">Chain Drive</a></li>
+                        <li><a href="#" data-module="coupling-design" class="nav-link">Coupling Design</a></li>
+                        <li><a href="#" data-module="power-screw" class="nav-link">Power Screw</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-group">
+                    <h3>Fasteners & Joints</h3>
+                    <ul>
+                        <li><a href="#" data-module="bolt-design" class="nav-link">Bolt Design</a></li>
+                        <li><a href="#" data-module="weld-design" class="nav-link">Weld Design</a></li>
+                        <li><a href="#" data-module="sheet-metal" class="nav-link">Sheet Metal Design</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-group">
+                    <h3>Bulk Material Handling</h3>
+                    <ul>
+                        <li><a href="#" data-module="conveyor-design" class="nav-link">Conveyor Design</a></li>
+                        <li><a href="#" data-module="hopper-design" class="nav-link">Hopper Design</a></li>
+                        <li><a href="#" data-module="chute-design" class="nav-link">Chute Design</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-group">
+                    <h3>Pressure & Thermal</h3>
+                    <ul>
+                        <li><a href="#" data-module="pressure-vessel" class="nav-link">Pressure Vessel</a></li>
+                        <li><a href="#" data-module="thermal-analysis" class="nav-link">Thermal Analysis</a></li>
+                        <li><a href="#" data-module="heat-exchanger" class="nav-link">Heat Exchanger</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-group">
+                    <h3>Hydraulics & Pneumatics</h3>
+                    <ul>
+                        <li><a href="#" data-module="hydraulic-cylinder" class="nav-link">Hydraulic Cylinder</a></li>
+                        <li><a href="#" data-module="pneumatic-cylinder" class="nav-link">Pneumatic Cylinder</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-group">
+                    <h3>Advanced Lifting</h3>
+                    <ul>
+                        <li><a href="#" data-module="lifting-lug" class="nav-link">Lifting Lug</a></li>
+                        <li><a href="#" data-module="crane-structure" class="nav-link">Crane Structure</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-group">
+                    <h3>Tolerances & Analysis</h3>
+                    <ul>
+                        <li><a href="#" data-module="gdt-calculator" class="nav-link">GD&T Calculator</a></li>
+                        <li><a href="#" data-module="iso-fits" class="nav-link">ISO Fits & Tolerances</a></li>
+                        <li><a href="#" data-module="stack-up-analysis" class="nav-link">Stack-up Analysis</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-group">
+                    <h3>Advanced FEA</h3>
+                    <ul>
+                        <li><a href="#" data-module="fea-analysis" class="nav-link">FEA Analysis</a></li>
+                        <li><a href="#" data-module="topology-optimization" class="nav-link">Topology Optimization</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-group">
+                    <h3>Design & Manufacturing</h3>
+                    <ul>
+                        <li><a href="#" data-module="dfm-validation" class="nav-link">DFM Validation</a></li>
+                        <li><a href="#" data-module="cost-estimation" class="nav-link">Cost Estimation</a></li>
+                        <li><a href="#" data-module="ai-material-selection" class="nav-link">AI Material Selection</a></li>
+                        <li><a href="#" data-module="ai-design-review" class="nav-link">AI Design Review</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-group">
+                    <h3>Project Management</h3>
+                    <ul>
+                        <li><a href="#" data-module="calculation-history" class="nav-link">Calculation History</a></li>
+                        <li><a href="#" data-module="report-generator" class="nav-link">Report Generator</a></li>
+                        <li><a href="#" data-module="project-manager" class="nav-link">Project Manager</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button id="darkModeToggle" class="theme-toggle" title="Toggle Dark Mode">🌙</button>
+                <button id="helpBtn" class="help-btn" title="Help">❓</button>
+                <button id="settingsBtn" class="settings-btn" title="Settings">⚙️</button>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Top Bar -->
+            <div class="top-bar">
+                <div class="breadcrumb" id="breadcrumb">Home</div>
+                <div class="top-actions">
+                    <button id="saveProject" class="btn btn-secondary" title="Save Project">💾 Save</button>
+                    <button id="exportPDF" class="btn btn-secondary" title="Export PDF">📄 Export</button>
+                    <button id="menuToggle" class="menu-toggle">☰</button>
+                </div>
+            </div>
+
+            <!-- Dashboard Home -->
+            <div id="dashboard-home" class="module-content active">
+                <div class="dashboard-hero">
+                    <h2>Professional Mechanical Engineering Design Calculator</h2>
+                    <p>ASME | ANSI | ISO | DIN | AGMA | AWS | AISC | API | EN Standards Compliant</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h4>23+ Modules</h4>
+                        <p>Complete design calculation suite</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>100+ Standards</h4>
+                        <p>International compliance</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Real-time Graphs</h4>
+                        <p>Interactive visualization</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>3D Preview</h4>
+                        <p>Three.js integration</p>
+                    </div>
+                </div>
+
+                <div class="quick-access">
+                    <h3>Quick Access - Popular Modules</h3>
+                    <div class="module-grid">
+                        <div class="module-card" data-module="material-database">
+                            <div class="module-icon">🗂️</div>
+                            <h4>Material Database</h4>
+                            <p>20+ Material Grades</p>
+                        </div>
+                        <div class="module-card" data-module="stress-analysis">
+                            <div class="module-icon">📊</div>
+                            <h4>Stress Analysis</h4>
+                            <p>Von Mises, Principal Stress</p>
+                        </div>
+                        <div class="module-card" data-module="beam-design">
+                            <div class="module-icon">🏗️</div>
+                            <h4>Beam Design</h4>
+                            <p>SFD & BMD Diagrams</p>
+                        </div>
+                        <div class="module-card" data-module="shaft-design">
+                            <div class="module-icon">⚙️</div>
+                            <h4>Shaft Design</h4>
+                            <p>ASME Standards</p>
+                        </div>
+                        <div class="module-card" data-module="gear-design">
+                            <div class="module-icon">🔧</div>
+                            <h4>Gear Design</h4>
+                            <p>AGMA & ISO 6336</p>
+                        </div>
+                        <div class="module-card" data-module="fea-analysis">
+                            <div class="module-icon">🌐</div>
+                            <h4>FEA Analysis</h4>
+                            <p>Stress & Deformation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Module Content Container -->
+            <div id="module-container" class="module-content"></div>
+        </main>
+    </div>
+
+    <!-- Modal for Help, Settings, etc. -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <!-- Calculation History Drawer -->
+    <div id="history-drawer" class="history-drawer">
+        <div class="history-header">
+            <h3>Calculation History</h3>
+            <button class="close-drawer">✕</button>
+        </div>
+        <div id="history-list" class="history-list"></div>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script src="js/material-database.js"></script>
+    <script src="js/stress-analysis.js"></script>
+    <script src="js/strain-deflection.js"></script>
+    <script src="js/beam-design.js"></script>
+    <script src="js/shaft-design.js"></script>
+    <script src="js/bearing-design.js"></script>
+    <script src="js/bolt-design.js"></script>
+    <script src="js/weld-design.js"></script>
+    <script src="js/gear-design.js"></script>
+    <script src="js/belt-drive.js"></script>
+    <script src="js/chain-drive.js"></script>
+    <script src="js/conveyor-design.js"></script>
+    <script src="js/structural-design.js"></script>
+    <script src="js/sheet-metal.js"></script>
+    <script src="js/pressure-vessel.js"></script>
+    <script src="js/fatigue-analysis.js"></script>
+    <script src="js/buckling-analysis.js"></script>
+    <script src="js/vibration-analysis.js"></script>
+    <script src="js/thermal-analysis.js"></script>
+    <script src="js/fea-analysis.js"></script>
+    <script src="js/dfm-validation.js"></script>
+    <script src="js/cost-estimation.js"></script>
+    <script src="js/report-generator.js"></script>
+    <script src="js/units-converter.js"></script>
+    <script src="js/gdt-calculator.js"></script>
+    <script src="js/iso-fits.js"></script>
+    <script src="js/stack-up-analysis.js"></script>
+    <script src="js/hydraulic-cylinder.js"></script>
+    <script src="js/pneumatic-cylinder.js"></script>
+    <script src="js/lifting-lug.js"></script>
+    <script src="js/crane-structure.js"></script>
+    <script src="js/hopper-design.js"></script>
+    <script src="js/chute-design.js"></script>
+    <script src="js/power-screw.js"></script>
+    <script src="js/cam-design.js"></script>
+    <script src="js/coupling-design.js"></script>
+    <script src="js/flywheel-design.js"></script>
+    <script src="js/heat-exchanger.js"></script>
+    <script src="js/topology-optimization.js"></script>
+    <script src="js/ai-material-selection.js"></script>
+    <script src="js/ai-design-review.js"></script>
+    <script src="js/calculation-history.js"></script>
+    <script src="js/project-manager.js"></script>
+    <script src="js/3d-viewer.js"></script>
+    <script src="js/utils.js"></script>
+</body>
+</html>
